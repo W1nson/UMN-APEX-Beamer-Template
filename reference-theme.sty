@@ -1,18 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{reference-theme}[2026/10/14 Reference-inspired Beamer style]
+\ProvidesPackage{reference-theme}[2026/10/14 UMN APEX Beamer style]
 \RequirePackage{tikz}
 \usetheme{Warsaw}
-\definecolor{SlideMagenta}{HTML}{B02D63}
-\definecolor{SlideGold}{HTML}{FFDD00}
-\setbeamercolor{structure}{fg=SlideMagenta}
-\setbeamercolor{title}{fg=white,bg=SlideMagenta}
-\setbeamercolor{frametitle}{fg=SlideMagenta,bg=SlideGold}
-\setbeamercolor{frametitle right}{fg=SlideMagenta,bg=SlideGold}
-\setbeamercolor{section in head/foot}{fg=white,bg=black}
-\setbeamercolor{subsection in head/foot}{fg=white,bg=black}
-\setbeamercolor{block title}{fg=white,bg=SlideMagenta!75!black}
-\setbeamercolor{block body}{fg=black,bg=SlideMagenta!8!white}
-\setbeamercolor{alerted text}{fg=red}
+\definecolor{UMNMaroon}{HTML}{7A0019}
+\definecolor{UMNGold}{HTML}{FFCC33}
+\setbeamercolor{structure}{fg=UMNMaroon}
+\setbeamercolor{title}{fg=UMNGold,bg=UMNMaroon}
+\setbeamercolor{frametitle}{fg=UMNMaroon,bg=UMNGold}
+\setbeamercolor{frametitle right}{fg=UMNMaroon,bg=UMNGold}
+\setbeamercolor{section in head/foot}{fg=white,bg=UMNMaroon}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=UMNMaroon}
+\setbeamercolor{block title}{fg=UMNGold,bg=UMNMaroon!75!black}
+\setbeamercolor{block body}{fg=black,bg=UMNMaroon!8!white}
+\setbeamercolor{alerted text}{fg=UMNMaroon}
 \setbeamersize{text margin left=0.85cm,text margin right=0.85cm}
 \setbeamertemplate{footline}{}
 \setbeamertemplate{headline}{%
@@ -24,15 +24,19 @@
 \setbeamertemplate{title page}{%
   \vbox{}\vfill
   \begin{centering}
+    \includegraphics[width=.72\textwidth]{assets/umn-banner.png}\par
+    \vskip1.4em
     \begin{beamercolorbox}[sep=8pt,center,rounded=true,shadow=true]{title}
       \usebeamerfont{title}\inserttitle\par
     \end{beamercolorbox}
-    \vskip1.5em
+    \vskip1em
     {\usebeamerfont{author}\insertauthor\par}
-    \vskip1.2em
+    \vskip.6em
     {\usebeamerfont{institute}\insertinstitute\par}
-    \vskip1.2em
+    \vskip.6em
     {\usebeamerfont{date}\insertdate\par}
+    \vskip.8em
+    \includegraphics[height=2cm]{assets/apex_icon.jpg}\par
   \end{centering}
   \vfill
 }

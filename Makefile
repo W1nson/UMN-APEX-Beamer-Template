@@ -4,7 +4,7 @@ export XDG_CACHE_HOME ?= $(CURDIR)/.cache
 .PHONY: slides setup clean
 slides: build/slides.pdf
 
-build/slides.pdf: slides.tex reference-theme.sty
+build/slides.pdf: slides.tex reference-theme.sty $(wildcard assets/*)
 	mkdir -p build
 	$(TECTONIC) --keep-logs --outdir build slides.tex
 
