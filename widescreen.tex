@@ -1,0 +1,69 @@
+% LAYOUT: use \widescreentrue for 16:9, or \widescreenfalse for 4:3.
+\newif\ifwidescreen
+\widescreentrue
+\ifwidescreen
+  \PassOptionsToClass{aspectratio=169}{beamer}
+\else
+  \PassOptionsToClass{aspectratio=43}{beamer}
+\fi
+\documentclass[11pt]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage[numbered,nonavigation]{reference-theme}
+\title{UMN APEX Research Update}
+\subtitle{A widescreen presentation example}
+\author{Your Name}
+\institute{University of Minnesota}
+\date{\today}
+\begin{document}
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}
+\section{Results}
+\begin{frame}{Make the main result easy to find}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.48\textwidth}
+      \begin{block}{Finding}
+        Lead with a concise statement of the result.
+      \end{block}
+      \begin{exampleblock}{Interpretation}
+        Explain what this result means in practice.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{.48\textwidth}
+      \begin{alertblock}{Limitation}
+        State uncertainty and assumptions clearly.
+      \end{alertblock}
+      These colors use the same maroon and gold palette.
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{A compact results table}
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    Method & Accuracy (\%) & Time (s) \\
+    \midrule
+    Baseline & 82.1 & 12.4 \\
+    Proposed & 89.3 & 10.8 \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\footnotesize Illustrative data; replace with your measurements.}
+\end{frame}
+\begin{frame}[fragile]{A code example}
+  % Code frames need the fragile option.
+  \begin{verbatim}
+def summarize(values):
+    return sum(values) / len(values)
+  \end{verbatim}
+\end{frame}
+\begin{frame}{Takeaways}
+  \begin{enumerate}
+    \item Summarize the evidence.
+    \item State the practical implication.
+    \item Explain the next step.
+  \end{enumerate}
+\end{frame}
+\end{document}

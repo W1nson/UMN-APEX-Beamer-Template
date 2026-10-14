@@ -1,4 +1,12 @@
-\documentclass[11pt,aspectratio=43]{beamer}
+% LAYOUT: use \widescreentrue for 16:9, or \widescreenfalse for 4:3.
+\newif\ifwidescreen
+\widescreenfalse
+\ifwidescreen
+  \PassOptionsToClass{aspectratio=169}{beamer}
+\else
+  \PassOptionsToClass{aspectratio=43}{beamer}
+\fi
+\documentclass[11pt]{beamer}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{reference-theme}
@@ -10,11 +18,11 @@
 \date{\today}
 
 \begin{document}
-\begin{frame}
+\begin{frame}[plain,noframenumbering]
   \titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Outline}
   \tableofcontents
 \end{frame}
 
