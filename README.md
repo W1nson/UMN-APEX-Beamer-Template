@@ -52,8 +52,7 @@ Generated PDFs, compiler logs, caches, and local environments are ignored by Git
 ## Branding assets
 
 - `assets/apex_icon.jpg`: user-provided UMN APEX logo, unchanged.
-- `assets/umn-banner.png` and `.svg`: official horizontal UMN wordmark, unchanged.
+- `assets/logoumn.png`: UMN logo from the user-selected [UofMN Beamer template](https://github.com/hamid-m/UofMN-Beamer-Template/blob/master/logoumn.png), unchanged.
 - Theme colors: UMN maroon `#7A0019` and UMN gold `#FFCC33`.
 
-See [asset sources](assets/README.md) for provenance. The PNG is used by LaTeX;
-the SVG is included for reuse. Adjust the logo sizes in `reference-theme.sty`.
+See [asset sources](assets/README.md) for provenance. The PNG is used by LaTeX. Adjust the logo sizes in `reference-theme.sty`.
