@@ -1,5 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{reference-theme}[2026/10/14 UMN APEX Beamer style]
+\newif\ifumnnavigation
+\newif\ifumnnumbers
+\newif\ifumnlogos
+\umnnavigationtrue
+\umnlogostrue
+\DeclareOption{nonavigation}{\umnnavigationfalse}
+\DeclareOption{numbered}{\umnnumberstrue}
+\DeclareOption{nologo}{\umnlogosfalse}
+\ProcessOptions\relax
 \RequirePackage{tikz}
 \usetheme{Warsaw}
 \definecolor{UMNMaroon}{HTML}{7A0019}
@@ -12,22 +21,46 @@
 \setbeamercolor{subsection in head/foot}{fg=white,bg=UMNMaroon}
 \setbeamercolor{block title}{fg=UMNGold,bg=UMNMaroon!75!black}
 \setbeamercolor{block body}{fg=black,bg=UMNMaroon!8!white}
+\setbeamercolor{block title alerted}{fg=white,bg=UMNMaroon}
+\setbeamercolor{block body alerted}{fg=black,bg=UMNMaroon!8!white}
+\setbeamercolor{block title example}{fg=UMNMaroon,bg=UMNGold}
+\setbeamercolor{block body example}{fg=black,bg=UMNGold!15!white}
+\setbeamercolor{page number in head/foot}{fg=UMNMaroon,bg=white}
 \setbeamercolor{alerted text}{fg=UMNMaroon}
 \setbeamersize{text margin left=0.85cm,text margin right=0.85cm}
 \setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+\ifumnnumbers
+  \setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,rightskip=.85cm]{page number in head/foot}%
+      \hfill\usebeamerfont{page number in head/foot}\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}%
+  }
+\fi
+\ifumnnavigation
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.5ex]{section in head/foot}%
     \insertsectionnavigationhorizontal{\paperwidth}{}{}%
   \end{beamercolorbox}%
 }
+\else
+  \setbeamertemplate{headline}{}
+\fi
+% Override these commands after loading the theme to use different artwork.
+\newcommand{\umnwordmark}{assets/logoumn.png}
+\newcommand{\umnapexlogo}{assets/apex_icon.jpg}
 \setbeamerfont{title}{size=\LARGE}
 \setbeamertemplate{title page}{%
   \vbox{}\vfill
   \begin{centering}
-    \includegraphics[width=.72\textwidth]{assets/logoumn.png}\par
-    \vskip1.4em
+    \ifumnlogos
+    \includegraphics[width=.72\textwidth,height=.12\paperheight,keepaspectratio]{\umnwordmark}\par
+    \vskip1.4em\fi
     \begin{beamercolorbox}[sep=8pt,center,rounded=true,shadow=true]{title}
       \usebeamerfont{title}\inserttitle\par
+      \ifx\insertsubtitle\@empty\else
+        \vskip.3em{\usebeamerfont{subtitle}\insertsubtitle\par}
+      \fi
     \end{beamercolorbox}
     \vskip1em
     {\usebeamerfont{author}\insertauthor\par}
@@ -36,7 +69,9 @@
     \vskip.6em
     {\usebeamerfont{date}\insertdate\par}
     \vskip.8em
-    \includegraphics[height=2cm]{assets/apex_icon.jpg}\par
+    \ifumnlogos
+    \includegraphics[height=.18\paperheight]{\umnapexlogo}\par
+    \fi
   \end{centering}
   \vfill
 }

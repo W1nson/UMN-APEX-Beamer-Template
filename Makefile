@@ -1,15 +1,28 @@
 TECTONIC ?= $(CURDIR)/.env/latex/bin/tectonic
+LATEXMK ?= latexmk
+ENGINE ?= tectonic
 export XDG_CACHE_HOME ?= $(CURDIR)/.cache
 
-.PHONY: slides setup clean
+.PHONY: slides examples all setup clean FORCE
 slides: build/slides.pdf
+examples: build/starter.pdf build/widescreen.pdf
+all: slides examples
 
-build/slides.pdf: slides.tex reference-theme.sty $(wildcard assets/*)
+# Recheck the output even when the selected engine changes.
+build/%.pdf: %.tex reference-theme.sty $(wildcard assets/*) FORCE
 	mkdir -p build
-	$(TECTONIC) --keep-logs --outdir build slides.tex
+ifeq ($(ENGINE),tectonic)
+	$(TECTONIC) --keep-logs --outdir build $<
+else ifeq ($(ENGINE),latexmk)
+	$(LATEXMK) -pdf -interaction=nonstopmode -halt-on-error -outdir=build $<
+else
+	$(error Unsupported ENGINE '$(ENGINE)'; use tectonic or latexmk)
+endif
+
+FORCE:
 
 setup:
 	CONDA_PKGS_DIRS="$(CURDIR)/.cache/conda" conda env create --prefix "$(CURDIR)/.env/latex" --file environment.yml
 
 clean:
-	rm -f build/slides.pdf build/slides.log
+	rm -rf build
