@@ -1,0 +1,71 @@
+\documentclass[11pt,aspectratio=43]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{reference-theme}
+
+% Replace these details with your own.
+\title{Your Presentation Title}
+\author{Your Name}
+\institute{Your University}
+\date{\today}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Section One}
+\begin{frame}{A list}
+  Insert a pause
+  \begin{itemize}
+    \item First point
+    \item Second point
+    \item Third point
+    \pause
+    \item This point appears on the next click.
+  \end{itemize}
+\end{frame}
+
+\section{Section Two}
+\begin{frame}{Using blocks}
+  \begin{block}{Block title}
+    Block content
+  \end{block}
+  \alert{An alert}
+\end{frame}
+
+\begin{frame}{An equation}
+  A simple linear model:
+  \[
+    y_i = \beta_0 + \beta_1 x_i + \varepsilon_i,
+    \qquad \varepsilon_i \sim \mathcal{N}(0,\sigma^2).
+  \]
+\end{frame}
+
+\begin{frame}{A figure and text}
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.63\textwidth}
+      \centering
+      % Replace this placeholder with your own image:
+      % \includegraphics[width=\linewidth]{your-figure.pdf}
+      \begin{tikzpicture}[scale=0.7]
+        \draw[->] (0,0) -- (5,0) node[right] {$x$};
+        \draw[->] (0,0) -- (0,4) node[above] {$y$};
+        \foreach \x/\y in {0.5/0.4,1/0.8,1.5/1.1,2/1.8,2.5/2,3/2.6,3.5/3,4/3.5}
+          \fill (\x,\y) circle (2pt);
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{enumerate}
+        \item Finding A
+        \item Finding B
+        \item Finding C
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+\end{document}

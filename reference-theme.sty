@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{reference-theme}[2026/10/14 Reference-inspired Beamer style]
+\RequirePackage{tikz}
+\usetheme{Warsaw}
+\definecolor{SlideMagenta}{HTML}{B02D63}
+\definecolor{SlideGold}{HTML}{FFDD00}
+\setbeamercolor{structure}{fg=SlideMagenta}
+\setbeamercolor{title}{fg=white,bg=SlideMagenta}
+\setbeamercolor{frametitle}{fg=SlideMagenta,bg=SlideGold}
+\setbeamercolor{frametitle right}{fg=SlideMagenta,bg=SlideGold}
+\setbeamercolor{section in head/foot}{fg=white,bg=black}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=black}
+\setbeamercolor{block title}{fg=white,bg=SlideMagenta!75!black}
+\setbeamercolor{block body}{fg=black,bg=SlideMagenta!8!white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamersize{text margin left=0.85cm,text margin right=0.85cm}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.5ex]{section in head/foot}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}%
+  \end{beamercolorbox}%
+}
+\setbeamerfont{title}{size=\LARGE}
+\setbeamertemplate{title page}{%
+  \vbox{}\vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center,rounded=true,shadow=true]{title}
+      \usebeamerfont{title}\inserttitle\par
+    \end{beamercolorbox}
+    \vskip1.5em
+    {\usebeamerfont{author}\insertauthor\par}
+    \vskip1.2em
+    {\usebeamerfont{institute}\insertinstitute\par}
+    \vskip1.2em
+    {\usebeamerfont{date}\insertdate\par}
+  \end{centering}
+  \vfill
+}
